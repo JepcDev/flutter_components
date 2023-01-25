@@ -13,7 +13,11 @@ class Listview2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // elevation Es la sobra del navbar
+        centerTitle: true,
         title: const Text('Listview Tipo 2'),
+        elevation: 0,
+        backgroundColor: Colors.indigo ,
       ),
       // Lista de widgets
       // Un ListView en su children aguanta cualquier widget
@@ -29,7 +33,12 @@ class Listview2Screen extends StatelessWidget {
         itemBuilder: (context, index) => ListTile(
           leading: const Icon(Icons.gamepad),
           title: Text(options[index]),
-          trailing: const Icon(Icons.arrow_forward_ios_rounded),
+          trailing: const Icon(Icons.arrow_forward_ios_rounded, color: Colors.indigo,),
+          // Produce un efecto de tap sobre los elementos de la lista
+          onTap: () {
+            final game = options[index];
+            print(game);
+          },
         ),
         separatorBuilder: (_, __) => const Divider(),
       )
