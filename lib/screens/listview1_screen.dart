@@ -26,7 +26,9 @@ class Listview1Screen extends StatelessWidget {
               title: Text(game),
               trailing: const Icon(Icons.arrow_forward_ios_rounded),
             )
-          ).toList()
+          ).toList(),
+          // El divider es un widget que hace separaciones entre widgets
+          Divider(),
           // ListTile(
           //   leading: Icon(Icons.account_circle_rounded),
           //   title: Text('Hola mundo'),
