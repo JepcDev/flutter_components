@@ -28,7 +28,7 @@ class Listview1Screen extends StatelessWidget {
             )
           ).toList(),
           // El divider es un widget que hace separaciones entre widgets
-          Divider(),
+          const Divider(),
           // ListTile(
           //   leading: Icon(Icons.account_circle_rounded),
           //   title: Text('Hola mundo'),
