@@ -20,6 +20,15 @@ class MyApp extends StatelessWidget {
         'listview1': ( BuildContext context) => const Listview1Screen(),
         'listview2': ( BuildContext context) => const Listview2Screen(),
       },
+      // Sirve para trabjar con rutas que son creadas de manera dinamica
+      // me va servir para cuando yo quiera trabajar con algun tipo de ruta dinamica
+      // Es decir sirve para trabajar con rutas que no fueron definidas previamente
+      onGenerateRoute: (settings) {
+        print(settings);
+        return  MaterialPageRoute(
+              builder: (context) => const Listview1Screen(),
+            );
+      },
     );
   }
 }

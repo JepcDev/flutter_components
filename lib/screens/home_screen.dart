@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fl_components/screens/screens.dart';
+
 class HomeScreen extends StatelessWidget {
 
   const HomeScreen({super.key});
@@ -16,7 +18,17 @@ class HomeScreen extends StatelessWidget {
         itemBuilder: (context, index) => ListTile(
           leading: const Icon(Icons.account_circle),
           title: const Text('Nombre de ruta'),
-          onTap: () {},
+          onTap: () {
+            // El builder es una funcion o algo que permite la construccion de un widget usualmente un builder retorna un widget
+            // final route = MaterialPageRoute(
+            //   builder: (context) => const Listview1Screen(),
+            // );
+            // la informacion del context se va pasando de widget en widget, en este punto el contexto sabe toda la informacion del arbol de widget hasta este punto, sabe toda la informacion de los scaffold , las rutas ect es decir todo lo que se esta construido hasta ante de este punto
+            // El "context" Sirve como una memoria de como esta construida mi aplicasion
+            // Navigator.push(context, route);
+
+            Navigator.pushNamed(context, 'listview1');
+          },
         ),
         separatorBuilder:(_, __) => const Divider(),
         itemCount: 10
