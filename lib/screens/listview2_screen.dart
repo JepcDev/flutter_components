@@ -16,8 +16,8 @@ class Listview2Screen extends StatelessWidget {
         // elevation Es la sobra del navbar
         centerTitle: true,
         title: const Text('Listview Tipo 2'),
-        elevation: 0,
-        backgroundColor: Colors.indigo ,
+        // elevation: 0,
+        // backgroundColor: Colors.indigo ,
       ),
       // Lista de widgets
       // Un ListView en su children aguanta cualquier widget
