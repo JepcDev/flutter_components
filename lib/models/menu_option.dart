@@ -15,7 +15,8 @@ class MenuOption {
   //screen es la pantalla que quiero ver
   final Widget screen;
   // si dejamos el constructor sin {} todas los argumentos seran posicionales, al poner los {} la persona podra enviar los datos en el orden que quiera
-  // El "require" sirve para obligar al que use este modelo mande o especificarme si o si los valores de estas propiedades , no importa el orden
+  // El "required" sirve para obligar al que use este modelo mande o especificarme si o si los valores de estas propiedades , no importa el orden
+  //Al ser definida como final una variable si o si se tiene que inicializar en el contructor
   MenuOption({
     required this.route,
     required this.name,

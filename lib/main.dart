@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: 'home',
       initialRoute: AppRoutes.initialRoute,
       // Rutas, con esta lista de rutas puedo apuntar a cualquier pantalla o navegar a cualquier pantalla
-      routes: AppRoutes.routes,
+      routes: AppRoutes.getAppRoutes(),
       // routes: {
       //   'home'     : ( BuildContext context) => const HomeScreen(),
       //   'listview1': ( BuildContext context) => const Listview1Screen(),

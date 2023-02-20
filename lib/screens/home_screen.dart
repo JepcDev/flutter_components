@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fl_components/router/app_routes.dart';
+
 // import 'package:fl_components/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,16 +10,20 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final option = AppRoutes.menuOptions;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Componentes en flutter'),
         centerTitle: true,
         elevation: 0,
+        backgroundColor: Colors.indigoAccent,
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
-          leading: const Icon(Icons.account_circle),
-          title: const Text('Nombre de ruta'),
+          // leading: const Icon(Icons.account_circle),
+          leading: Icon(option[index].icon, color: Colors.indigoAccent,) ,
+          // title: const Text('Nombre de ruta'),
+          title:  Text(option[index].name),
           onTap: () {
             // El builder es una funcion o algo que permite la construccion de un widget usualmente un builder retorna un widget
             // final route = MaterialPageRoute(
@@ -27,11 +33,13 @@ class HomeScreen extends StatelessWidget {
             // El "context" Sirve como una memoria de como esta construida mi aplicasion
             // Navigator.push(context, route);
 
-            Navigator.pushNamed(context, 'listview1');
+            Navigator.pushNamed(context, option[index].route);
           },
         ),
         separatorBuilder:(_, __) => const Divider(),
-        itemCount: 10
+        // itemCount: 10
+        // itemCount: AppRoutes.menuOptions.length
+        itemCount: option.length
       )
     );
   }
