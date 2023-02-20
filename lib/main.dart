@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fl_components/theme/app_theme.dart';
 import 'package:fl_components/router/app_routes.dart';
 
 void main() => runApp(const MyApp());
@@ -37,20 +38,21 @@ class MyApp extends StatelessWidget {
     //         );
     //   },
     //copyWith hace una copia del tema que tiene actualmente la app y configuramos los elementos conforme lo vamos utilizando
-      theme: ThemeData.light().copyWith(
+    //   theme: ThemeData.light().copyWith(
 
         //Color primario
         // Configura el color primario de todos los componentes que no tengan un color ya asignado
-        primaryColor: Colors.indigo,
+    //     primaryColor: Colors.indigo,
 
         // AppBar Theme
         // Configura el color de todos los appBar de la app y demas elementos
-        appBarTheme: const AppBarTheme(
-          color: Colors.indigo,
+    //     appBarTheme: const AppBarTheme(
+    //       color: Colors.indigo,
           // Es la sombra que hay debajo de cada appbar
-          elevation: 0
-        ),
-      ),
+    //       elevation: 0
+    //     ),
+    //   ),
+      theme: AppTheme.lightTheme,
     );
   }
 }

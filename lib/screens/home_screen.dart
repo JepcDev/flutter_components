@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fl_components/theme/app_theme.dart';
 import 'package:fl_components/router/app_routes.dart';
 
 // import 'package:fl_components/screens/screens.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
           // leading: const Icon(Icons.account_circle),
-          leading: Icon(option[index].icon, color: Colors.indigoAccent,) ,
+          leading: Icon(option[index].icon, color: AppTheme.primary,) ,
           // title: const Text('Nombre de ruta'),
           title:  Text(option[index].name),
           onTap: () {
