@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // propiedades staticas por que no se crearan instancias de la clase cada vez que se quiera el color primario
-  static const Color primary = Colors.limeAccent;
+  static const Color primary = Colors.green;
 
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     //Color primario
