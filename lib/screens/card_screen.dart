@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fl_components/theme/app_theme.dart';
+import 'package:fl_components/widgets/widgets.dart';
+// import 'package:fl_components/theme/app_theme.dart';
 
 class CardScreen extends StatelessWidget {
 
@@ -19,22 +20,14 @@ class CardScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         // Serie de widgets que en este caso seran cards
-        children: [
-          Card(
-            // Child widget que va ser colocado dentro de la tarjeta
-            // Child va a ser una columna por que quiero poner widgets uno bajo de otro
-            child: Column(
-              children: const [
-                ListTile(
-                  leading: Icon(Icons.flash_on_rounded,color: AppTheme.primary),
-                  title: Text('I`m title'),
-                  subtitle: Text('The mysterious power known as the Speed Force is an energy field that has, over the centuries, granted incredible powers of velocity to certain heroes.'),
-                )
-              ],
-            ),
-          )
+        children: const [
+          //posicionarse sobre el widget card y ctrl + "." y elegir la opcion "extrac widget"
+          //cuando se necesite reutilizar un widget hay que crear un widget independiente para poder reutilizarlo
+          CustomCardType1(),
+          CustomCardType2()
         ],
       ),
     );
   }
 }
+

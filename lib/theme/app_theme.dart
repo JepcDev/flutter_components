@@ -18,6 +18,11 @@ class AppTheme {
       // Es la sombra que hay debajo de cada appbar
       elevation: 0
     ),
+
+    //TextButton Theme
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(primary: primary),
+    )
   );
 
     static final ThemeData darkTheme = ThemeData.dark().copyWith(
@@ -32,5 +37,9 @@ class AppTheme {
       // Es la sombra que hay debajo de cada appbar
       elevation: 0
     ),
+    //TextButton Theme
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(foregroundColor: primary),
+    )
   );
 }
