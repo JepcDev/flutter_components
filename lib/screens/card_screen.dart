@@ -24,6 +24,7 @@ class CardScreen extends StatelessWidget {
           //posicionarse sobre el widget card y ctrl + "." y elegir la opcion "extrac widget"
           //cuando se necesite reutilizar un widget hay que crear un widget independiente para poder reutilizarlo
           CustomCardType1(),
+          SizedBox( height: 10,),
           CustomCardType2()
         ],
       ),
