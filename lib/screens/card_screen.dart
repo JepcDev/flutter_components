@@ -25,6 +25,15 @@ class CardScreen extends StatelessWidget {
           //cuando se necesite reutilizar un widget hay que crear un widget independiente para poder reutilizarlo
           CustomCardType1(),
           SizedBox( height: 10,),
+          CustomCardType2(),
+
+          SizedBox( height: 10,),
+          CustomCardType2(),
+
+          SizedBox( height: 10,),
+          CustomCardType2(),
+
+          SizedBox( height: 10,),
           CustomCardType2()
         ],
       ),
