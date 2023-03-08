@@ -4,6 +4,40 @@ class AlertScreen extends StatelessWidget {
 
   const AlertScreen({super.key});
 
+  // mostrar dialogo
+  void displayDialog(BuildContext context) {
+
+    showDialog(
+      //nos permite cerrar el dialogo cuando hacemos click en la sombra
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          elevation: 5,
+          title: const Text('Title'),
+          // para darle forma a los bordes del alertdialog
+          shape: RoundedRectangleBorder(borderRadius: BorderRadiusDirectional.circular(10)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Text('Contenido de la alerta'),
+              SizedBox(height: 10,),
+              FlutterLogo(size: 50,)
+            ],
+          ),
+          //actions: Si yo quiero que la alerta siempre se muestre y tiene que presionar algun boton que ejecute una accion
+          // Las acciones son otros widget o accines que podemos definir
+          actions: [
+            TextButton(
+              onPressed: ()=>Navigator.pop(context),
+              child: const Text('Cancelar')
+            )
+          ],
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +53,7 @@ class AlertScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Text('Mostrar alerta', style: TextStyle(fontSize: 16),),
           ),
-          onPressed: (){}
+          onPressed: () =>  displayDialog(context)
         ),
       ),
 
