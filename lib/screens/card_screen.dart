@@ -25,16 +25,16 @@ class CardScreen extends StatelessWidget {
           //cuando se necesite reutilizar un widget hay que crear un widget independiente para poder reutilizarlo
           CustomCardType1(),
           SizedBox( height: 10,),
-          CustomCardType2(),
+          CustomCardType2(imagenUrl: 'https://fotoarte.com.uy/wp-content/uploads/2019/03/Landscape-fotoarte.jpg'),
+
+          SizedBox( height: 20,),
+          CustomCardType2(imagenUrl: 'https://s1.eestatic.com/2019/06/21/viajes/tasmania-viajes-viajes_407971957_126174353_1706x960.jpg',),
+
+          SizedBox( height: 20,),
+          CustomCardType2( name: 'Los tranquilos puertos de la isla',imagenUrl: 'https://s1.eestatic.com/2019/06/21/viajes/viajes_407971985_126175149_1706x1280.jpg'),
 
           SizedBox( height: 10,),
-          CustomCardType2(),
-
-          SizedBox( height: 10,),
-          CustomCardType2(),
-
-          SizedBox( height: 10,),
-          CustomCardType2()
+          // CustomCardType2(imagenUrl: 'https://s1.eestatic.com/2019/06/21/viajes/viajes_407971985_126175149_1706x1280.jpg',)
         ],
       ),
     );

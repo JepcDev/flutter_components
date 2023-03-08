@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
     //       elevation: 0
     //     ),
     //   ),
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
     );
   }
 }
