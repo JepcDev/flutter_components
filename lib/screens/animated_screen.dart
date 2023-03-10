@@ -48,7 +48,13 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
       ),
       body: Center(
         //un container se puede ver como un div de html
-        child: Container(
+        // child: Container(
+        child: AnimatedContainer(
+          // duration cuanto tiempo quiero que tarde en animar del estado anterior al nuevo estado
+          // duration es la duracion de la transicion entre el anterior estado y el nuevo esado
+          duration: const Duration( milliseconds: 400),
+          //animacion de las curvas
+          curve: Curves.easeOutCubic,
           // width: 100,
           width: _width,
           // height: 100,
@@ -64,11 +70,25 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: onChangeShape,
-        child: const Icon(Icons.play_circle_outline_rounded, size: 35,),
-        // onPressed: () => Navigator.pop(context),
-      ),
+
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: onChangeShape,
+            heroTag: 'onChangeShape',
+            child: const Icon(Icons.play_circle_outline_rounded, size: 35,),
+            // onPressed: () => Navigator.pop(context),
+          ),
+          const SizedBox(height: 5,),
+          FloatingActionButton(
+            onPressed: ()=>Navigator.pop(context),
+            heroTag: 'pop',
+            child: const Icon(Icons.close),
+            // onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      )
     );
   }
 }

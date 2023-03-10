@@ -37,6 +37,10 @@ class CardScreen extends StatelessWidget {
           // CustomCardType2(imagenUrl: 'https://s1.eestatic.com/2019/06/21/viajes/viajes_407971985_126175149_1706x1280.jpg',)
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.close),
+        onPressed: ()=> Navigator.pop(context)
+      ),
     );
   }
 }

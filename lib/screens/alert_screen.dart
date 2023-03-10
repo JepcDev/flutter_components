@@ -82,23 +82,47 @@ class AlertScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         // child: Text('AlertScreen'),
-        child: ElevatedButton(
-          // style: ElevatedButton.styleFrom(
-          //   primary: Colors.green,
-          //   shape: const StadiumBorder(),
-          //   elevation: 0
-          // ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-            child: Text('Mostrar alerta', style: TextStyle(fontSize: 16),),
-          ),
-          // onPressed: () =>  displayDialogAndroid(context)
-          // onPressed: () =>  displayDialogIOS(context)
-          //Platform importar de dart:io
-          //condicion basado en la plataforma movil
-          onPressed: () => Platform.isAndroid
-            ? displayDialogAndroid( context )
-            : displayDialogIOS( context )
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              // style: ElevatedButton.styleFrom(
+              //   primary: Colors.green,
+              //   shape: const StadiumBorder(),
+              //   elevation: 0
+              // ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Text('Mostrar alerta Android', style: TextStyle(fontSize: 16),),
+              ),
+              // onPressed: () =>  displayDialogAndroid(context)
+              // onPressed: () =>  displayDialogIOS(context)
+              //Platform importar de dart:io
+              //Platform.isAndroid condicion basado en la plataforma movil: si la plataforma es android muestra la alerta de android
+              onPressed: () => Platform.isAndroid
+                ? displayDialogAndroid( context )
+                : displayDialogIOS( context )
+            ),
+            const SizedBox(height:20),
+            ElevatedButton(
+              // style: ElevatedButton.styleFrom(
+              //   primary: Colors.green,
+              //   shape: const StadiumBorder(),
+              //   elevation: 0
+              // ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Text('Mostrar alerta IOS', style: TextStyle(fontSize: 16),),
+              ),
+              // onPressed: () =>  displayDialogAndroid(context)
+              // onPressed: () =>  displayDialogIOS(context)
+              //Platform importar de dart:io
+              //condicion basado en la plataforma movil
+              onPressed: () => !Platform.isAndroid
+                ? displayDialogAndroid( context )
+                : displayDialogIOS( context )
+            ),
+          ],
         ),
       ),
 

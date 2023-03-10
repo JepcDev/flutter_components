@@ -12,7 +12,7 @@ class AppRoutes {
 
   // Es una lista de menuOptions y solo puedo poner menuOptions
   static final menuOptions = <MenuOption>[
-    MenuOption(route: 'home', name: 'Home Screen', screen: const HomeScreen(), icon: Icons.home_rounded),
+    // MenuOption(route: 'home', name: 'Home Screen', screen: const HomeScreen(), icon: Icons.home_rounded),
     MenuOption(route: 'alert', name: 'Alerts', screen: const AlertScreen(), icon: Icons.add_alert_outlined),
     MenuOption(route: 'card', name: 'Cards', screen: const CardScreen(), icon: Icons.credit_card),
     MenuOption(route: 'listview1', name: 'ListView type 1', screen: const Listview1Screen(), icon: Icons.list),
@@ -24,10 +24,14 @@ class AppRoutes {
   //tengo un mapa que tiene como llave un string y una funcion que recibe un BuildContext y regresa un widget
   //basicamente estamos recorriendo el arreglo (menuOptions)y agregando solamente todas las rutas al objeto map (appRoutes) ('home': ( BuildContext context) => const HomeScreen())Esta funcion construye el widget
   static Map<String, Widget Function(BuildContext)> getAppRoutes(){
+
     Map<String, Widget Function(BuildContext)> appRoutes = {};
+    appRoutes.addAll({'home' : ( BuildContext context) => const HomeScreen()});
+
     for (final option in menuOptions) {
       appRoutes.addAll({option.route: ( BuildContext context) => option.screen});
     }
+
     return appRoutes;
   }
 
