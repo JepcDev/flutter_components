@@ -17,6 +17,7 @@ class AppRoutes {
     MenuOption(route: 'card', name: 'Cards', screen: const CardScreen(), icon: Icons.credit_card),
     MenuOption(route: 'listview1', name: 'ListView type 1', screen: const Listview1Screen(), icon: Icons.list),
     MenuOption(route: 'listview2', name: 'ListView type 2', screen: const Listview2Screen(), icon: Icons.list_alt),
+    MenuOption(route: 'avatar', name: 'Circle Avatar', screen: const AvatarScreen(), icon: Icons.supervised_user_circle_outlined),
   ];
 
   //tengo un mapa que tiene como llave un string y una funcion que recibe un BuildContext y regresa un widget
