@@ -11,6 +11,7 @@ class InputsScreen extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Inputs y Forms'),
       ),
 
@@ -20,11 +21,23 @@ class InputsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         // Padding para que los elementos no queden pegados a los bordes
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric( horizontal: 16, vertical: 8 ),
           child: Column(
             children: const [
 
-              CustomInputField( labelText: 'Nombre', hintText: 'Nombre del usuario',)
+              SizedBox( height: 10 ),
+
+              CustomInputField( labelText: 'Nombre', hintText: 'Nombre del usuario',textInputType: TextInputType.text),
+              SizedBox( height: 16 ),
+
+              CustomInputField( labelText: 'Apellido', hintText: 'Apellido del usuario',),
+              SizedBox( height: 16 ),
+
+              CustomInputField( labelText: 'Correo', hintText: 'Correo del usuario', textInputType: TextInputType.emailAddress,),
+              SizedBox( height: 16 ),
+
+              CustomInputField( labelText: 'Contraseña', hintText: 'Contraseña del usuario', obscureText: true,),
+              SizedBox( height: 16 ),
             ],
           ),
         ),

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class CustomInputField extends StatelessWidget {
@@ -7,6 +9,8 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final IconData? icon;
   final IconData? suffixIcon;
+  final TextInputType? textInputType;
+  final bool obscureText;
 
   const CustomInputField({
     Key? key,
@@ -15,6 +19,8 @@ class CustomInputField extends StatelessWidget {
     this.helperText,
     this.icon,
     this.suffixIcon,
+    this.textInputType,
+    this.obscureText = false,
   }) : super(key: key);
 
   @override
@@ -25,9 +31,16 @@ class CustomInputField extends StatelessWidget {
     return TextFormField(
       //cuando se construye el widget se pone en el input el foco
       autofocus: false,
-      initialValue: 'nombre',
+      // initialValue: 'nombre',
+      initialValue: '',
       //textCapitalization se usa para campos donde se quiera capitalizar cada palabra ejemplo nombres y apellidos
       textCapitalization: TextCapitalization.words,
+      // El teclado cambia segun que tipo de input elijamos en este casi el tipo es email y salen los caracteres de @ y demas para introduccir el correo electronico
+      // keyboardType: TextInputType.emailAddress ,
+      keyboardType: textInputType ,
+      // evita que el texto que excribe el usuario sea visible, lo reemplaza por caracteres especiales casi siempre un "*" o un "."
+      // obscureText: true,
+      obscureText: obscureText,
       //captura el valor que se esta ingresando en el input
       // se puede tener aqui algo que este escuchando ese valor y almacenarlo en el estado de la aplicasion global o en estado del statefullwidget o en el estado implementado para manejar el formulario
       onChanged: ( value ) {
