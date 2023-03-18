@@ -41,24 +41,26 @@ class InputsScreen extends StatelessWidget {
         // lo que tenemos que hacer es seleccionar un widget donde los input o mi formulario va a ser contenido
           child: Form(
             key: myFormKey,
-            // algo que necesito es que cuando se vaya hacer algun posteo ejemplo un onchange , cuando se vaya hacer algo con el formulario necesitamos acceso a todo el formulario como tal 
+            // algo que necesito es que cuando se vaya hacer algun posteo ejemplo un onchange , cuando se vaya hacer algo con el formulario necesitamos acceso a todo el formulario como tal
             child: Column(
               children: [
-          
+
                 const SizedBox( height: 10 ),
-          
-                const CustomInputField( labelText: 'Nombre', hintText: 'Nombre del usuario',textInputType: TextInputType.text),
+
+                // const CustomInputField( labelText: 'Nombre', hintText: 'Nombre del usuario',textInputType: TextInputType.text),
+                // no puede ser una constante por que este valor "formValues" lo estoy mandando en el momento en el que el widget es construido, el build se esta construyendo el widget no es en el momento en el que yo hago la compilacion de mi aplicacion
+                CustomInputField( labelText: 'Nombre', hintText: 'Nombre del usuario',textInputType: TextInputType.text, formPoperty: 'first_name', formValues: formValues,),
                 const SizedBox( height: 16 ),
-          
-                const CustomInputField( labelText: 'Apellido', hintText: 'Apellido del usuario',),
+
+                CustomInputField( labelText: 'Apellido', hintText: 'Apellido del usuario', formPoperty: 'last_name', formValues: formValues),
                 const SizedBox( height: 16 ),
-          
-                const CustomInputField( labelText: 'Correo', hintText: 'Correo del usuario', textInputType: TextInputType.emailAddress,),
+
+              CustomInputField( labelText: 'Correo', hintText: 'Correo del usuario', textInputType: TextInputType.emailAddress, formPoperty: 'email', formValues: formValues),
                 const SizedBox( height: 16 ),
-          
-                const CustomInputField( labelText: 'Contraseña', hintText: 'Contraseña del usuario', obscureText: true,),
+
+                CustomInputField( labelText: 'Contraseña', hintText: 'Contraseña del usuario', obscureText: true, formPoperty: 'password', formValues: formValues),
                 const SizedBox( height: 16 ),
-          
+
                 ElevatedButton(
                   onPressed:() {
                     // para quitar el foco del input del formulario, para minimizar el teclado despues de darle click al boton que acciona este onpress
@@ -71,7 +73,7 @@ class InputsScreen extends StatelessWidget {
                     }
                     //* : imprimir valores del formulario
                     // el problema que se tiene aqui esque el fomulario esta esta esparcido en los widget personalizados del input y dentro de estos esta el TextFormField
-                    // el form sabe que hay dentro de el hay TextFormField el problema esque no sabemos como obtener esa informacion o valores 
+                    // el form sabe que hay dentro de el hay TextFormField el problema esque no sabemos como obtener esa informacion o valores
                     print(formValues);
                   },
                   child: const SizedBox(

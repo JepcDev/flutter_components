@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class CustomInputField extends StatelessWidget {
@@ -12,6 +10,15 @@ class CustomInputField extends StatelessWidget {
   final TextInputType? textInputType;
   final bool obscureText;
 
+  // es la propiedad a la que se va a apuntar del formulario , me lo tiene que proporcionar o sino esto no va a funcionar
+  // es la propiedad que yo quiero manejar de mi formulario
+  final String formPoperty;
+  // sirve para tener todos los valores del formulario
+  // es el formulario que yo quiero manejar, este mapa va a venir pasado por referencia
+  final Map<String, String> formValues;
+
+  // todos los objetos son pasados por referencia en dart un mapa, un listado, un , una isntancia de una clase es pasado por referencia
+
   const CustomInputField({
     Key? key,
     this.hintText,
@@ -21,6 +28,8 @@ class CustomInputField extends StatelessWidget {
     this.suffixIcon,
     this.textInputType,
     this.obscureText = false,
+    required this.formPoperty,
+    required this.formValues,
   }) : super(key: key);
 
   @override
@@ -43,9 +52,13 @@ class CustomInputField extends StatelessWidget {
       obscureText: obscureText,
       //captura el valor que se esta ingresando en el input
       // se puede tener aqui algo que este escuchando ese valor y almacenarlo en el estado de la aplicasion global o en estado del statefullwidget o en el estado implementado para manejar el formulario
-      onChanged: ( value ) {
-        print( 'value: $value');
-      },
+      // aqui tengo el nuevo valor del campo de mi input de mi formulario
+      // onChanged: ( value ) {
+        // print( 'value: $value');
+        // cuando cambia el formulario lo que puedo hacer es tomar mi "formValues" apuntar al "formProperty" que es la propiedad que yo quiero y esto es igual al value que esta teniendo el "input"
+        // formValues[formPoperty] = value;
+      // },
+      onChanged: (value) => formValues[formPoperty]=value,
       // imaginemos que en la caja de texto se requiera o que tenga algun tipo de validacion , ejemplo : que sean mas de 5 caracteres, que cumpla con una expresion regular ect.
       // validator sirve para hacer esas validaciones.
       validator: (value) {
