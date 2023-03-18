@@ -24,7 +24,7 @@ class InputsScreen extends StatelessWidget {
     };
 
     return Scaffold(
-
+      // resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Inputs y Forms'),
@@ -40,6 +40,7 @@ class InputsScreen extends StatelessWidget {
         // hay un punto en el cual que hay un widget que contiene todos los input de nuestro formulario, a ese widget es que nosotros necesitamos enmarcarlo con el widget form
         // lo que tenemos que hacer es seleccionar un widget donde los input o mi formulario va a ser contenido
           child: Form(
+            // me permite validar automaticamente los valores de cada uno de esos textformfield
             key: myFormKey,
             // algo que necesito es que cuando se vaya hacer algun posteo ejemplo un onchange , cuando se vaya hacer algo con el formulario necesitamos acceso a todo el formulario como tal
             child: Column(
@@ -55,11 +56,26 @@ class InputsScreen extends StatelessWidget {
                 CustomInputField( labelText: 'Apellido', hintText: 'Apellido del usuario', formPoperty: 'last_name', formValues: formValues),
                 const SizedBox( height: 16 ),
 
-              CustomInputField( labelText: 'Correo', hintText: 'Correo del usuario', textInputType: TextInputType.emailAddress, formPoperty: 'email', formValues: formValues),
+                CustomInputField( labelText: 'Correo', hintText: 'Correo del usuario', textInputType: TextInputType.emailAddress, formPoperty: 'email', formValues: formValues),
                 const SizedBox( height: 16 ),
 
                 CustomInputField( labelText: 'Contraseña', hintText: 'Contraseña del usuario', obscureText: true, formPoperty: 'password', formValues: formValues),
                 const SizedBox( height: 16 ),
+
+                // input que nos permita seleccionar algun valor de alguna lista de valores
+                DropdownButtonFormField(
+                  items: const [
+                    DropdownMenuItem( value: 'Admin', child: Text('Admin')),
+                    DropdownMenuItem( value: 'Superuser', child: Text('Superuser')),
+                    DropdownMenuItem( value: 'Developer', child: Text('Developer')),
+                    DropdownMenuItem( value: 'Sr. Developer', child: Text('Sr. Developer')),
+                  ],
+                  // si no se tiene definida esta funcion onchange el input va a pensar que esta desabilitado
+                  onChanged: ( value ) {
+                    print(value);
+                    formValues['role'] = value ?? 'Admin';
+                  }
+                ),
 
                 ElevatedButton(
                   onPressed:() {
