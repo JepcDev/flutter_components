@@ -20,6 +20,7 @@ class AppRoutes {
     MenuOption(route: 'avatar', name: 'Circle Avatar', screen: const AvatarScreen(), icon: Icons.supervised_user_circle_outlined),
     MenuOption(route: 'Animated', name: 'Animated Container', screen: const AnimatedScreen(), icon: Icons.play_circle_outline_rounded),
     MenuOption(route: 'inputs', name: 'Text Input', screen: const InputsScreen(), icon: Icons.input_rounded),
+    MenuOption(route: 'slider', name: 'Slider & Checks', screen: const SliderScreen(), icon: Icons.slow_motion_video_rounded),
   ];
 
   //tengo un mapa que tiene como llave un string y una funcion que recibe un BuildContext y regresa un widget
