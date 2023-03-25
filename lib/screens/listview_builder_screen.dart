@@ -56,6 +56,14 @@ bool isLoading = false;
     add5();
     isLoading = false;
     setState(() {});
+
+    if (scrollController.position.pixels + 100 <= scrollController.position.maxScrollExtent) return;
+    scrollController.animateTo(
+      //offset es el punto del nuevo scroll al que quiero moverme
+      scrollController.position.pixels + 120,
+      duration: const Duration( milliseconds: 300 ),
+      curve: Curves.fastOutSlowIn
+    );
   }
 
 
@@ -110,14 +118,15 @@ bool isLoading = false;
               },
             ),
 
-            Positioned(
-              bottom: 40,
-              // left se calcula respecto al width: del container del _LoadingIcon,
-              // size.width el ancho que tenga el dispositivo pero quiero la mitad(size.width * 0.5)
-              // si no se le resta 30 aun tenemos un widget de 60px que esta salido
-              left: size.width * 0.5 - 30,
-              child: const _LoadingIcon()
-            )
+            if( isLoading )
+              Positioned(
+                bottom: 40,
+                // left se calcula respecto al width: del container del _LoadingIcon,
+                // size.width el ancho que tenga el dispositivo pero quiero la mitad(size.width * 0.5)
+                // si no se le resta 30 aun tenemos un widget de 60px que esta salido
+                left: size.width * 0.5 - 30,
+                child: const _LoadingIcon()
+              )
           ],
         ),
       ),
@@ -133,6 +142,7 @@ class _LoadingIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(10),
       // color: Colors.red,
       height: 60,
       width: 60,
