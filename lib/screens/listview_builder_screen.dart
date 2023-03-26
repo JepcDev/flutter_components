@@ -12,7 +12,7 @@ class ListViewBuilderScreen extends StatefulWidget {
 class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 
 // tenemos un listado que controla cuantos elementos se van a renderizar o se se estan renderizando en el ListView.builde
-  final List<int> imagenesIds = [1,2,3,4,5,6,7,8,9,10];
+  final List<int> imagesIds = [1,2,3,4,5,6,7,8,9,10];
 // Necesito saber el punto de mi listview , es decir que tan cerca del final estoy, o cual es la posicion del scroll de ese listview para saber eso vamos a ocupar un controlador
 // tal vez el key funcionaria pero usualmente cuando se trabaja con el listview se quiere escuchar los cambios que hay en el listview, que tan al final estoy , que tan arrieba estoy o en que posicion estoy
 // cual quier widget que tenga scroll va tener el controller "new ScrollController();"
@@ -69,14 +69,22 @@ bool isLoading = false;
 
   void add5() {
     // obtiene el ultimo valor, sirve para aumentar la cantidad de imagenes o sumar basado en ese valor
-    final lastId = imagenesIds.last;
+    final lastId = imagesIds.last;
     // se requiere un iterable o algo en lo que se pueda recorrer
-    imagenesIds.addAll(
+    imagesIds.addAll(
       // tengo un arreglo del 1 al 5 y se esta barriendo recorriendo cada uno de los elementos y solo sumandole los valores del arreglo al ultimo valor del arreglo de imagenes
       [1,2,3,4,5].map((e) => lastId + e)
     );
     // para actualizar el listview
     setState(() {});
+  }
+
+  Future<void> onRefresh() async {
+    await Future.delayed(const Duration( seconds: 2));
+    final lastId = imagesIds.last;
+    imagesIds.clear();
+    imagesIds.add(lastId +1);
+    add5();
   }
 
   @override
@@ -96,26 +104,31 @@ bool isLoading = false;
         // stack es un widget que nos deja poner un widget sobre otro, parecido a un row o column
         child: Stack(
           children: [
-            ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              // cual quier widget que tenga scroll va tener el controller
-              // ahora el scrollController esta asociado a este lisview puedo saber su valor en todo momento
-              controller: scrollController,
-              // itemCount: 10,
-              // cantidad de imagenes que hay en imagenesIds
-              itemCount: imagenesIds.length,
-              itemBuilder: (BuildContext context, int index) {
-                return FadeInImage(
-                  // que tome todo el ancho posible
-                  width: double.infinity,
-                  height: 300,
-                  // que tome todo el espacio que tiene la imagen
-                  fit: BoxFit.cover,
-                  placeholder: const AssetImage('assets/jar-loading.gif'),
-                  // image: NetworkImage('https://picsum.photos/500/300?image=${index + 1}')
-                  image: NetworkImage('https://picsum.photos/500/300?image=${ imagenesIds[index]}')
-                );
-              },
+            // borrar listado y cargar nuevas imagenes hay que buscar el widget que tiene el scroll
+            RefreshIndicator(
+              color: AppTheme.primary,
+              onRefresh: onRefresh,
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                // cual quier widget que tenga scroll va tener el controller
+                // ahora el scrollController esta asociado a este lisview puedo saber su valor en todo momento
+                controller: scrollController,
+                // itemCount: 10,
+                // cantidad de imagenes que hay en imagenesIds
+                itemCount: imagesIds.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return FadeInImage(
+                    // que tome todo el ancho posible
+                    width: double.infinity,
+                    height: 300,
+                    // que tome todo el espacio que tiene la imagen
+                    fit: BoxFit.cover,
+                    placeholder: const AssetImage('assets/jar-loading.gif'),
+                    // image: NetworkImage('https://picsum.photos/500/300?image=${index + 1}')
+                    image: NetworkImage('https://picsum.photos/500/300?image=${ imagesIds[index]}')
+                  );
+                },
+              ),
             ),
 
             if( isLoading )
